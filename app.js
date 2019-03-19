@@ -27,6 +27,7 @@ app.get("/", function(req, res){
     res.redirect('/blogs');
 });
 
+//INDEX ROUTE
 app.get("/blogs", function(req, res){
     Blog.find({}, function(err, blog){
         if(err){
@@ -37,6 +38,29 @@ app.get("/blogs", function(req, res){
         }
     });
 });
+
+//NEW ROUTE
+app.get("/blogs/new", function(req, res){
+    res.render("new");
+});
+
+//CREATE ROUTE
+app.post("/blogs", function(req, res){
+    var data = {
+        title: req.body.title, 
+        image: req.body.image,
+        body: req.body.body
+    }
+    Blog.create(data, function(err, newBlog){
+        if(err){
+            res.render("new");
+        }
+        else{
+            res.redirect("/blogs");
+        }
+    });
+});
+
 
 //Server Setup
 app.listen(3000, function(){
