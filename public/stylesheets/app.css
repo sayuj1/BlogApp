@@ -5,3 +5,24 @@ i.icon{
 .container.main{
     margin-top: 7em;
 }
+
+#delete{
+    display: inline;
+}
+
+#blog-heading{
+    text-align: center;
+}
+
+#blog-img{
+    height: 120px;
+}
+
+#blog-description{
+    margin-left: 2%;
+    text-align: justify;
+}
+
+#blog-readmore{
+    margin-left: 10%;
+}

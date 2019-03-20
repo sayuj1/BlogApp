@@ -1,19 +1,34 @@
 <% include partials/header %>
-<h1>Index Page!!</h1>
 
-<% blogs.forEach(function(blog){ %>
-    <div>
-        <h2><%= blog.title %></h2>
-        <img src="<%= blog.image %>" alt="">
-        <span><%= blog.created %></span>
-       <p><%= blog.body.substring(0,100) %>
-            <% 
-            if(blog.body.length > 100){ %>
-                ...
-            <%} 
-            %></p>
-        <a href="/blogs/<%= blog._id%>">Read More</a>
+<div class="ui main text container">
+    <div class="ui huge header" id="blog-heading">Blog App</div>
+    <div class="ui top attached segment">
+        <div class="ui items">
+            <% blogs.forEach(function(blog){ %>
+                <div class="ui huge header">
+                        <a href="/blogs/<%= blog._id%>" class="header"><%= blog.title %></a>
+                 </div>
+                 <span><%= blog.created.toDateString() %></span>
+                <div class="item">
+                    <div class="image">
+                        <img src="<%= blog.image %>" alt="" id="blog-img">
+                    </div>
+                    <div class="description" id="blog-description">
+                        <p><%- blog.body.substring(0,250) %>
+                            <% 
+                            if(blog.body.length > 250){ %>
+                                ...
+                            <%} 
+                            %></p>
+                    </div>
+                    <div class="extra" id="blog-readmore">
+                            <a href="/blogs/<%= blog._id%>" class="ui floated inverted primary button">Read More</a>
+                     </div>
+                </div>
+                <hr>
+            <% }) %> 
+        </div>
     </div>
-<% }) %> 
+</div>
 
 <% include partials/footer %>

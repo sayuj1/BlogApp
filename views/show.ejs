@@ -5,10 +5,17 @@
     <span><%= blog.created.toDateString() %></span>
     <div class="ui top attached">
         <div class="item">
-            <img class="ui centered rounded" src="<%= blog.image %>">
-            <div class="description">
+            <br><br>
+            <img class="ui centered big image" src="<%= blog.image %>">
+            <br><br>
+            <div class="description" id="blog-description">
                 <p><%- blog.body %></p>
             </div>
+            <br><br>
+            <a href="/blogs/<%= blog._id %>/edit" class="ui inverted primary big button">Edit</a>
+            <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST" id="delete">
+                <button type="submit" class="ui inverted red big button">Delete</button>
+            </form>
         </div>
     </div>
 </div>

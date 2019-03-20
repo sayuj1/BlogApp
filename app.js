@@ -14,7 +14,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverrid("_method"));
-app.use(expressSanitizer());
+app.use(expressSanitizer());  //this should place after bodyParser
 
 //MONGOOSE/MODEL CONFIG
 var blogSchema = new mongoose.Schema({
@@ -104,6 +104,18 @@ app.put("/blogs/:id", function(req, res){
         }
         else{
             res.redirect("/blogs/" + req.params.id);
+        }
+    });
+});
+
+// DELETE ROUTE 
+app.delete("/blogs/:id", function(req, res){
+    Blog.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect("/blogs");
+        }
+        else{
+            res.redirect("/blogs");
         }
     });
 });
