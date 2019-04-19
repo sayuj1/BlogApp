@@ -22,8 +22,8 @@ Its main functionality is to allow users to create blog post(s), view them, edit
  3. Enter the following commands:
  
     ```
-    npm install
-    node app.js
+    >npm install
+    >node app.js
     ```
     
  4. Visit `http://localhost:3000/`
